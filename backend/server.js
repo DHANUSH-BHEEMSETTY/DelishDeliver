@@ -15,6 +15,7 @@ const port = process.env.PORT || 4000
 const allowedOrigins = 
 [
     'http://localhost:5173',
+    'https://delish-deliver-1.vercel.app/',
     'http://localhost:5174'
 ]
 app.use(cors({
