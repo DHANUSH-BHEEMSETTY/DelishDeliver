@@ -15,16 +15,20 @@ const port = process.env.PORT || 4000
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:5174',
-  'https://delish-deliver-1-git-master-dhanushs-projects-adfe2c73.vercel.app',
-  'https://delish-deliver-1.vercel.app/' // if you added a custom domain
+  'https://delish-deliver-1.vercel.app',
+  'https://delish-deliver-1-git-master-dhanushs-projects-adfe2c73.vercel.app'
 ];
 
 app.use(cors({
-  origin: allowedOrigins,
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS: " + origin));
+    }
+  },
   credentials: true
 }));
-
-
 // middleware
 app.use(express.json())
 
