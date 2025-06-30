@@ -1,0 +1,36 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 5%;
+  background: linear-gradient(); /* gradient background */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* subtle shadow */
+  border-radius: 0 0 12px 12px; /* soft bottom corners */
+    top: 0;
+  z-index: 999;
+}
+
+.navbar .logo {
+  width: max(10%, 100px);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.navbar .logo:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+.navbar .profile {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  object-fit: cover;
+  border: 2px solid white;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.navbar .profile:hover {
+  transform: rotate(10deg) scale(1.1);
+}

@@ -1,0 +1,157 @@
+.header {
+  height: 34vw;
+  margin: 30px auto;
+  background: linear-gradient(to right, #ffecd2, #fcb69f);
+  position: relative;
+  overflow: hidden;
+}
+
+.buildings {
+  background: url('/cityscape.png') repeat-x bottom;
+  height: 100%;
+  position: absolute;
+  width: 200%;
+  animation: moveCity 30s linear infinite;
+  z-index: 1;
+  bottom: 0;
+  opacity: 0.4; /* increased visibility */
+  filter: brightness(1.1) blur(1px); /* gives a soft glow */
+}
+
+.scooter {
+  position: absolute;
+  width: 120px;
+  bottom: 8%;
+  animation: zoomScooter 8s ease-in-out infinite;
+  z-index: 2;
+}
+
+.scooter img {
+  width: 100%;
+  height: auto;
+}
+
+.header-contents {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 1.5vw;
+  max-width: 50%;
+  bottom: 10%;
+  left: 6vw;
+  animation: fadeIn 3s;
+  z-index: 3;
+}
+
+.header-contents h2 {
+  font-weight: 700;
+  color: #2d2d2d; /* darkened for contrast */
+  font-size: max(4.5vw, 26px);
+  text-shadow: 1px 1px 2px #ffffff80;
+}
+
+.header-contents p {
+  color: #333333; /* deeper tone */
+  font-size: 1vw;
+  text-shadow: 1px 1px 2px #ffffffaa;
+}
+
+.header-contents button {
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  padding: 1vw 2.3vw;
+  background-color: #ff4f4f;
+  font-size: max(1vw, 14px);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.header-contents button:hover {
+  background-color: #e73333;
+}
+
+@keyframes moveCity {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes zoomScooter {
+  0% {
+    left: -150px;
+  }
+  50% {
+    left: 55%;
+  }
+  100% {
+    left: 110%;
+  }
+}
+
+@media (max-width: 1050px) {
+  .header-contents {
+    max-width: 45%;
+  }
+}
+
+@media (max-width: 750px) {
+  .header-contents {
+    max-width: 65%;
+  }
+
+  .header-contents p {
+    display: none;
+  }
+
+  .header-contents button {
+    padding: 2vw 4vw;
+  }
+}
+
+.dust-trail {
+  position: absolute;
+  left: -30px;
+  bottom: 10px;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(#ccc, transparent);
+  border-radius: 50%;
+  animation: dustPuff 0.6s infinite ease-out;
+  z-index: 1;
+  opacity: 0.6;
+}
+
+@keyframes dustPuff {
+  0% {
+    transform: scale(0.2);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+.pulse-btn {
+  animation: pulseGlow 1.8s infinite;
+  box-shadow: 0 0 0 rgba(255, 79, 79, 0.7);
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 79, 79, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(255, 79, 79, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 79, 79, 0);
+  }
+}
