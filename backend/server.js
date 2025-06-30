@@ -16,7 +16,7 @@ const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:5174',
   'https://delish-deliver-1-git-master-dhanushs-projects-adfe2c73.vercel.app',
-  'https://your-vercel-custom-domain.com' // if you added a custom domain
+  'https://delish-deliver-1.vercel.app/' // if you added a custom domain
 ];
 
 app.use(cors({
