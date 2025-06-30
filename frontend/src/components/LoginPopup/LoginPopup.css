@@ -1,15 +1,19 @@
-.login-popup{
-    position: absolute;
-    z-index: 1;
+/* Login Popup Overlay */
+.login-popup {
+    position: fixed; /* Full-screen overlay */
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background-color: #00000090;
+    z-index: 1000;
+    background-color: #00000090; /* semi-transparent background */
     display: grid;
 }
 
-.login-popup-container{
+/* Login Popup Container */
+.login-popup-container {
     place-self: center;
-    width: max(23vw, 330px);
+    width: clamp(330px, 30vw, 400px); /* Responsive width */
     color: #808080;
     background-color: white;
     display: flex;
@@ -19,34 +23,46 @@
     border-radius: 8px;
     font-size: 14px;
     animation: fadeIn 0.5s;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* soft shadow */
+    backdrop-filter: blur(4px); /* blur background */
 }
 
-.login-popup-title{
+/* Title Row */
+.login-popup-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: black;
 }
 
-.login-popup-title img{
+.login-popup-title img {
     width: 16px;
     cursor: pointer;
 }
 
-.login-popup-inputs{
+/* Inputs Layout */
+.login-popup-inputs {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.login-popup-inputs input{
+.login-popup-inputs input {
     outline: none;
     border: 1px solid #c9c9c9;
     padding: 10px;
     border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.login-popup-container button{
+.login-popup-inputs input:focus {
+    border-color: #ff6347;
+    box-shadow: 0 0 3px rgba(255, 99, 71, 0.5);
+}
+
+/* Submit Button */
+.login-popup-container button {
     border: none;
     padding: 10px;
     border-radius: 4px;
@@ -54,21 +70,41 @@
     background-color: tomato;
     font-size: 15px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.login-popup-condition{
+.login-popup-container button:hover {
+    background-color: #e63c1d;
+}
+
+/* Checkbox & Terms */
+.login-popup-condition {
     display: flex;
-    align-items: start;
+    align-items: center;
     gap: 8px;
-    margin-top: -15px;
+    font-size: 12px;
+    margin-top: -10px;
 }
 
-.login-popup-condition input{
-    margin-top: 5px;
+.login-popup-condition input {
+    margin-top: 0;
 }
 
-.login-popup p span{
+/* Footer Text and Switch */
+.login-popup p span {
     color: tomato;
     font-weight: 500;
     cursor: pointer;
+}
+
+/* Fade Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
