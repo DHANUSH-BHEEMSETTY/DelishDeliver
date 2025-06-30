@@ -12,12 +12,13 @@ const app = express()
 const port = process.env.PORT || 4000
 
 // ✅ CORS setup
-const allowedOrigins = 
-[
-    'http://localhost:5173',
-    'https://delish-deliver-1.vercel.app/',
-    'http://localhost:5174'
-]
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:5174',
+  'https://delish-deliver-1-git-master-dhanushs-projects-adfe2c73.vercel.app',
+  'https://your-vercel-custom-domain.com' // if you added a custom domain
+];
+
 app.use(cors({
   origin: allowedOrigins,
   credentials: true
