@@ -16,7 +16,8 @@ const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:5174',
   'https://delish-deliver-1.vercel.app',
-  'https://delish-deliver-1-git-master-dhanushs-projects-adfe2c73.vercel.app'
+  'https://delish-deliver-1-git-master-dhanushs-projects-adfe2c73.vercel.app',
+  'https://delishdeliver-1.onrender.com'
 ];
 
 app.use(cors({
