@@ -3,57 +3,61 @@ import cors from 'cors'
 import { connectDB } from './config/db.js'
 import foodRouter from './routes/foodRoute.js'
 import userRouter from './routes/userRoute.js'
-import 'dotenv/config'
 import cartRouter from './routes/cartRoute.js'
 import orderRouter from './routes/orderRoute.js'
+import 'dotenv/config'
 
-// app config
+// ✅ App config
 const app = express()
 const port = process.env.PORT || 4000
 
-// ✅ CORS setup
+// ✅ Allowed Frontend Origins (localhost + Vercel)
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:5174',
   'https://delish-deliver-1.vercel.app',
   'https://delish-deliver-1-git-master-dhanushs-projects-adfe2c73.vercel.app',
   'https://delishdeliver-1.onrender.com',
-  'https://admin-delish-deliver.vercel.app'
-];
+  'https://admin-delish-deliver.vercel.app'  // ✅ Your admin frontend on Vercel
+]
 
-
+// ✅ CORS middleware — must be before any routes
 app.use(cors({
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
+      callback(null, true)
     } else {
-      callback(new Error("Not allowed by CORS: " + origin));
+      callback(new Error('Not allowed by CORS: ' + origin))
     }
   },
   credentials: true
-}));
-// middleware
+}))
+
+// ✅ Parse JSON bodies
 app.use(express.json())
 
-// db connection
+// ✅ Connect to MongoDB
 connectDB()
 
-// api endpoints
-app.use('/api/food', foodRouter)
+// ✅ Serve image files with proper headers
 app.use('/images', (req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*'); // or use your allowed origin
-  res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin'); // <== Very important for images
-  next();
-}, express.static('uploads'));
+  res.setHeader('Access-Control-Allow-Origin', '*') // or specific origin
+  res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin') // for image access
+  next()
+}, express.static('uploads'))
 
+// ✅ Routes
+app.use('/api/food', foodRouter)
 app.use('/api/user', userRouter)
 app.use('/api/cart', cartRouter)
 app.use('/api/order', orderRouter)
 
+// ✅ Root route
 app.get('/', (req, res) => {
   res.send('API Working')
 })
 
+// ✅ Start server
 app.listen(port, () => {
-  console.log(`server started on http://localhost:${port}/`)
+  console.log(`✅ Server started on http://localhost:${port}`)
 })
